@@ -3,7 +3,7 @@
 @tailwind utilities;
 @layer base {
   body {
-    @apply font-normal font-ubuntu overflow-x-hidden h-screen flex items-center justify-center
+    @apply font-normal font-ubuntu overflow-x-hidden h-screen flex items-center justify-center bg-magnolia
   }
 }
 

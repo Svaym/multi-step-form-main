@@ -1,9 +1,9 @@
+import { FC } from "react"
 
-const App = () => {
+const App: FC = () => {
   return (
-    <h1 className="text-3xl text-orange-300 font-bold underline">
-      Hello world!
-    </h1>
+    <>
+    </>
   )
 }
 
