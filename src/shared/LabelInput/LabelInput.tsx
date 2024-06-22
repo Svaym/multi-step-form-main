@@ -22,7 +22,6 @@ const LabelInput:FC<LabelInputProps> = ({ children, value, onChange, htmlFor, id
           { mistake }
         </h3>
       </div>
-      {/* border-lightGray */}
       <input className={`${borderColor} px-4 py-3 font-medium text-marineBlue outline-none rounded-md border-2 transition-colors duration-300 ease-linear focus:border-coolGray`} type={type} value={value} onChange={onChange} id={id} placeholder={placeholder} />
     </div>
   )
