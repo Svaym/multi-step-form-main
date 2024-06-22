@@ -6,24 +6,24 @@ import Sidebar from '../Sidebar/Sidebar'
 import LabelInput from '../../shared/LabelInput/LabelInput'
 import Button from '../../shared/Button/Button'
 
-const FirstStep: FC = () => {
+type FirstStepProps = {
+  nextStep: () => void;
+};
+const FirstStep: FC<FirstStepProps> = ({ nextStep }) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [number, setNumber] = useState('')
   const [nameMistake, setNameMistake] = useState(false)
   const [emailMistake, setEmailMistake] = useState(false)
   const [numberMistake, setNumberMistake] = useState(false)
-  // const [currentStep, setCurrentStep] = useState(1);
   const checkName = (): void => {
     const pattern = /^[a-zA-Z]+$/;
     setNameMistake(!pattern.test(name));
   };
-
   const checkEmail = (): void => {
     const pattern = /[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
     setEmailMistake(!pattern.test(email));
   };
-
   const checkNumber = (): void => {
     const pattern = /^[0-9]+$/;
     setNumberMistake(!pattern.test(number));
@@ -33,24 +33,10 @@ const FirstStep: FC = () => {
     checkName();
     checkEmail();
     checkNumber();
-    // if (
-    //   name.trim() !== '' &&
-    //   email.trim() !== '' &&
-    //   number.trim() !== '' &&
-    //   !nameMistake &&
-    //   !emailMistake &&
-    //   !numberMistake
-    // ) {
-    //   setName('');
-    //   setEmail('');
-    //   setNumber('');
-    //   setCurrentStep(currentStep + 1);
-    // }
   }
   return (
     <Section>
       <div className='flex items-center'>
-      {/* currentStep={currentStep} */}
         <Sidebar />
         <div className='px-5'>
           <Title>Personal info</Title>
@@ -68,7 +54,7 @@ const FirstStep: FC = () => {
               mistake={numberMistake ? 'Should only contain numbers' : ''} htmlFor='phone' id='phone' value={number} placeholder='e.g. +1 234 567 890' onChange={(eve) => setNumber(eve.target.value)} >
               Phone Number
             </LabelInput>
-            <Button disabled={name.trim() === '' || email.trim() === '' || number.trim() === '' || nameMistake ||emailMistake || numberMistake} />
+            <Button onClick={nextStep} />
           </form>
         </div>`
       </div>
@@ -77,4 +63,16 @@ const FirstStep: FC = () => {
 }
 
 export default FirstStep
-
+// if (
+    //   name.trim() !== '' &&
+    //   email.trim() !== '' &&
+    //   number.trim() !== '' &&
+    //   !nameMistake &&
+    //   !emailMistake &&
+    //   !numberMistake
+    // ) {
+    //   setName('');
+    //   setEmail('');
+    //   setNumber('');
+    //   setCurrentStep(currentStep + 1);
+    // }

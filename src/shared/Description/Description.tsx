@@ -1,11 +1,12 @@
 import { FC } from 'react'
 
 interface DescriptionProps {
-  children: string
+  children: string,
+  textCenter?: string
 }
-const Description: FC<DescriptionProps> = ({ children }) => {
+const Description: FC<DescriptionProps> = ({ children, textCenter }) => {
   return (
-    <p className=''>
+    <p className={`${textCenter}`}>
       { children }
     </p>
   )

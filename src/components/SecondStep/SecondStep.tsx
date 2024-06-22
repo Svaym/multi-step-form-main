@@ -7,7 +7,11 @@ import Button from '../../shared/Button/Button'
 import GoBack from '../../shared/GoBack/GoBack'
 import card from './cards'
 
-const SecondStep: FC = () => {
+type SecondStepProps = {
+  prevStep: () => void;
+  nextStep: () => void;
+};
+const SecondStep: FC<SecondStepProps> = ({ prevStep, nextStep }) => {
   const [activePlan, setActivePlan] = useState<number>(0)
   const [term, setTerm] = useState<string>('month')
   const handleActivePlan = (id: number): void => {
@@ -43,8 +47,8 @@ const SecondStep: FC = () => {
             </div>
           </div>
           <div className='flex items-center justify-between mt-10'>
-            <GoBack onClick={() => console.log('adsaads')} />
-            <Button />
+            <GoBack onClick={prevStep} />
+            <Button onClick={nextStep} />
           </div>
         </div>
       </div>

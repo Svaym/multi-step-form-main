@@ -5,7 +5,11 @@ import Title from '../../shared/Title/Title'
 import Description from '../../shared/Description/Description'
 import GoBack from '../../shared/GoBack/GoBack'
 
-const FourthStep: FC = () => {
+type FourthStepProps = {
+  prevStep: () => void;
+  nextStep: () => void;
+};
+const FourthStep: FC<FourthStepProps> = ({ prevStep, nextStep }) => {
   return (
     <Section>
       <div className='flex items-center'>
@@ -14,8 +18,8 @@ const FourthStep: FC = () => {
           <Title>Finishing up</Title>
           <Description>Double-check everything looks OK before confirming.</Description>
           <div className='flex items-center justify-between mt-10'>
-            <GoBack onClick={() => console.log('adsaads')} />
-            <button className='bg-purplishBlue rounded-md py-3 px-4 block ml-auto font-semibold text-white transition-colors duration-500 ease-linear hover:bg-sky-950'>
+            <GoBack onClick={prevStep} />
+            <button onClick={nextStep} className='bg-purplishBlue rounded-md py-3 px-4 block ml-auto font-semibold text-white transition-colors duration-500 ease-linear hover:bg-sky-950'>
               Confirm
             </button>
           </div>

@@ -7,12 +7,16 @@ import Button from '../../shared/Button/Button'
 import GoBack from '../../shared/GoBack/GoBack'
 import opportunity from './opportunities'
 
+type ThirdStepProps = {
+  prevStep: () => void;
+  nextStep: () => void;
+};
 interface Choice {
   title: string;
   desc: string;
   price: string;
 }
-const ThirdStep: FC = () => {
+const ThirdStep: FC<ThirdStepProps> = ({ prevStep, nextStep }) => {
   const [choice, setChoice] = useState<number[]>([])
   const handleChoice = (id: number): void => {
     if (choice.includes(id)) {
@@ -47,9 +51,9 @@ const ThirdStep: FC = () => {
               </div>
             ))}
           </div>
-          <div className='flex items-center justify-between mt-10'>
-            <GoBack onClick={() => console.log('adsaads')} />
-            <Button />
+          <div className='flex items-center justify-between mt-5'>
+            <GoBack onClick={prevStep} />
+            <Button onClick={nextStep} />
           </div>
         </div>
       </div>
